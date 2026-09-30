@@ -1,0 +1,37 @@
+# Digital Document Wallet - Overhaul Plan
+
+## Phase 1: Clean Up
+- [x] Remove empty/unused files (auth.js, helpers.js, button.jsx, loader.jsx)
+- [x] Remove duplicate index.css
+- [x] Clean up global.css and consolidate styles
+- [x] Rebrand to "DocuVault - Digital Document Wallet" consistently
+- [x] Make guide pages publicly accessible (no login required)
+- [x] Update index.html with proper branding
+
+## Phase 2: Enhance Existing Pages
+- [x] Dashboard - improved stats, real content, better layout
+- [x] Documents - full document listing with mock data, search, filters
+- [x] Upload - full drag & drop interface with file type support
+- [x] Profile - complete profile with avatar, details, activity
+- [x] Settings - tabbed settings (account, security,  storage)
+- [x] Login/Register - polished UI
+
+## Phase 3: Add New Pages
+- [x] Shared Documents page
+- [x] Trash/Recycle Bin page
+- [x] Document Viewer/Preview page
+- [x] Help Center page
+- [x] Pricing page
+- [x] About page
+- [x] Terms of Service page
+
+## Phase 4: Navigation & Layout Updates
+- [x] Update App.jsx with all new routes
+- [x] Update Navbar with new navigation items
+- [x] Update Sidebar with new sections
+- [x] Update Footer with all links
+
+## Phase 5: Polish & Verify
+- [x] Update API service with document CRUD mocks
+- [x] Verify the app runs without errors
+- [x] Test navigation and all routes

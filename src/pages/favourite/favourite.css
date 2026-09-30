@@ -1,0 +1,21 @@
+/* Reuse all document page styles */
+@import "../documents/documents.css";
+
+/* Favourite page specific styles */
+.favourite-hero {
+  background: linear-gradient(135deg, #b45309 0%, #d97706 50%, #f59e0b 100%);
+}
+
+.favourite-hero .upload-btn {
+  color:whitesmoke;
+}
+
+.favourite-hero .upload-btn:hover {
+  color: whitesmoke;
+}
+
+/* Empty state icon for favourites */
+.favourite-page .empty-state .empty-icon {
+  color: #f59e0b;
+  opacity: 0.6;
+}

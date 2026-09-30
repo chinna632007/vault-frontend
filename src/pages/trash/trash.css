@@ -1,0 +1,320 @@
+.trash-page {
+    min-height: calc(100vh - 80px);
+    padding: 32px 0 48px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.page-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 28px 32px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.page-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.page-hero h1 {
+    margin: 6px 0 8px;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    position: relative;
+    z-index: 1;
+}
+
+.page-hero p {
+    margin: 0;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+}
+
+.empty-trash-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 1px solid #dc2626;
+    background: white;
+    color: #dc2626;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.empty-trash-btn:hover {
+    background: #dc2626;
+    color: white;
+}
+
+.trash-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+}
+
+.trash-item {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.trash-item-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.trash-icon {
+    font-size: 20px;
+    color: #94a3b8;
+}
+
+.trash-item h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: #111827;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.trash-meta {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.trash-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.restore-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: 1px solid #10b981;
+    background: white;
+    color: #10b981;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.restore-btn:hover {
+    background: #10b981;
+    color: white;
+}
+
+.permanent-delete-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: 1px solid #ef4444;
+    background: white;
+    color: #ef4444;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.permanent-delete-btn:hover {
+    background: #ef4444;
+    color: white;
+}
+
+.confirm-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    backdrop-filter: blur(4px);
+}
+
+.confirm-dialog {
+    background: white;
+    border-radius: 24px;
+    padding: 32px;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    animation: dropdownFadeIn 0.2s ease;
+}
+
+.confirm-icon {
+    font-size: 48px;
+    color: #f59e0b;
+    margin-bottom: 16px;
+}
+
+.confirm-dialog h3 {
+    margin: 0 0 8px;
+    color: #111827;
+}
+
+.confirm-dialog p {
+    margin: 0 0 20px;
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+.confirm-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.confirm-cancel {
+    padding: 10px 24px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    color: #475569;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.confirm-cancel:hover {
+    background: #f8fafc;
+}
+
+.confirm-delete {
+    padding: 10px 24px;
+    border: none;
+    background: #dc2626;
+    color: white;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.confirm-delete:hover {
+    background: #b91c1c;
+}
+
+/* ── Auto-delete policy notice (below the page hero) ──────────── */
+.auto-delete-notice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #f1f5f9;
+    font-size: 0.85rem;
+}
+
+.notice-icon {
+    font-size: 1rem;
+    color: #fbbf24;
+}
+
+/* ── Days-remaining badge on each trash item ──────────── */
+.trash-days-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-top: 4px;
+    align-self: flex-start;
+}
+
+.trash-days-badge.safe {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.trash-days-badge.warning {
+    background: #fef9c4;
+    color: #854d0e;
+}
+
+.trash-days-badge.expired {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.days-icon {
+    font-size: 0.85rem;
+}
+
+/* ── Highlight items that are about to be auto-deleted ──────────── */
+.trash-item.expiring-soon {
+    border: 1px solid #fbbf24;
+}
+
+.trash-item.expired {
+    border: 1px solid #ef4444;
+    opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+    .trash-grid {
+        grid-template-columns: 1fr;
+    }
+    .trash-actions {
+        flex-direction: column;
+    }
+    .trash-actions button {
+        width: 100%;
+        justify-content: center;
+    }
+}

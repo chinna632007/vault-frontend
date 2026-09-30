@@ -1,0 +1,88 @@
+.getting-started-page {
+    min-height: calc(100vh - 80px);
+    padding: 48px 0;
+}
+
+.getting-started-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.getting-started-header h1 {
+    margin: 16px 0 8px;
+    font-size: 2.5rem;
+    color: #0f172a;
+}
+
+.getting-started-header p {
+    margin: 0;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.step-row {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+    padding: 24px 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    transition: all 0.3s ease;
+}
+
+.step-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
+}
+
+.step-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.step-row-text {
+    flex: 1;
+}
+
+.step-row-text h3 {
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+    color: #111827;
+}
+
+.step-row-text p {
+    margin: 0;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .getting-started-header h1 {
+        font-size: 1.75rem;
+    }
+    .step-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
