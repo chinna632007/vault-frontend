@@ -48,6 +48,11 @@
 
 html {
   scroll-behavior: smooth;
+  /* Prevent the whole document from becoming wider than the screen on
+     mobile. Setting this on <html> (in addition to body) is required
+     because iOS Safari / many mobile browsers ignore overflow-x on body
+     alone, which was pushing the footer off-screen. */
+  overflow-x: hidden;
 }
 
 body {

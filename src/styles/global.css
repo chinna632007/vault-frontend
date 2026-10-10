@@ -547,16 +547,26 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  /* Never let the layout grow wider than the screen. `clip` (not `hidden`)
+     avoids breaking `position: sticky` used by some pages. */
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 .layout-body {
   display: flex;
   flex: 1;
+  min-width: 0;
   padding-top: var(--header-height);
 }
 
 .main-content {
   flex: 1;
+  /* Allow this flex item to shrink instead of forcing the page wider
+     than the viewport on small screens. */
+  min-width: 0;
+  max-width: 100%;
   margin-left: var(--sidebar-width);
   padding: 30px;
   min-height: calc(100vh - var(--header-height));
@@ -588,6 +598,11 @@
   padding: 60px 0 30px;
   margin-top: auto;
   margin-left: var(--sidebar-width);
+  /* Keep the footer within the screen width on every device so it is
+     never cut off when the page is zoomed out on mobile. */
+  width: auto;
+  max-width: 100%;
+  overflow-x: clip;
   transition: margin-left 0.3s ease;
 }
 
