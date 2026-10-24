@@ -161,11 +161,11 @@ const mockRequest = async (url, method = "get", data = null, config = {}) => {
     }
 
     if (url.includes("/auth/forgot-password")) {
-        const email = String(data?.email || "").trim().toLowerCase();
-        const user = getStoredUsers().find((item) => item.email?.toLowerCase() === email);
+        const username = String(data?.username || "").trim().toLowerCase();
+        const user = getStoredUsers().find((item) => item.username?.toLowerCase() === username);
         const token = user ? `${Date.now()}-${Math.random().toString(36).slice(2)}` : null;
         if (user) localStorage.setItem(`docuvault-reset-${token}`, JSON.stringify({ userId: user.id, expiresAt: Date.now() + 30 * 60 * 1000 }));
-        return { data: { message: "If an account exists for that email, a reset link has been sent.", ...(token ? { demoResetUrl: `/reset-password?token=${encodeURIComponent(token)}` } : {}) } };
+        return { data: { message: "If an account exists for that username, a reset link has been sent to its registered email.", ...(token ? { demoResetUrl: `/login?token=${encodeURIComponent(token)}` } : {}) } };
     }
 
     if (url.includes("/auth/reset-password")) {
