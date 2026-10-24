@@ -3,8 +3,6 @@ import { AuthProvider, useAuth } from "./context/authcontext";
 import MainLayout from "./layouts/mainlayout";
 import AuthLayout from "./layouts/authlayout";
 import Login from "./pages/login/login";
-import ForgotPassword from "./pages/login/forgot-password";
-import ResetPassword from "./pages/login/reset-password";
 import Register from "./pages/register/register";
 import Wallet from "./pages/wallet/wallet";
 import Dashboard from "./pages/dashboard/dashboard";
@@ -54,8 +52,6 @@ function App() {
         {/* Auth routes */}
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
-          <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
-          <Route path="/reset-password" element={<PublicRoute><ResetPassword /></PublicRoute>} />
           <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
         </Route>
 
