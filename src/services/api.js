@@ -160,6 +160,32 @@ const mockRequest = async (url, method = "get", data = null, config = {}) => {
         throw new Error("Invalid username or password");
     }
 
+    if (url.includes("/auth/forgot-password")) {
+        const email = String(data?.email || "").trim().toLowerCase();
+        const user = getStoredUsers().find((item) => item.email?.toLowerCase() === email);
+        const token = user ? `${Date.now()}-${Math.random().toString(36).slice(2)}` : null;
+        if (user) localStorage.setItem(`docuvault-reset-${token}`, JSON.stringify({ userId: user.id, expiresAt: Date.now() + 30 * 60 * 1000 }));
+        return { data: { message: "If an account exists for that email, a reset link has been sent.", ...(token ? { demoResetUrl: `/reset-password?token=${encodeURIComponent(token)}` } : {}) } };
+    }
+
+    if (url.includes("/auth/reset-password")) {
+        const token = data?.token;
+        const key = `docuvault-reset-${token}`;
+        let reset;
+        try { reset = JSON.parse(localStorage.getItem(key)); } catch { reset = null; }
+        if (!reset || reset.expiresAt < Date.now()) {
+            localStorage.removeItem(key);
+            throw new Error("This password reset link is invalid or expired.");
+        }
+        const users = getStoredUsers();
+        const index = users.findIndex((item) => item.id === reset.userId);
+        if (index < 0) throw new Error("This password reset link is invalid or expired.");
+        users[index] = { ...users[index], password: data.password };
+        saveUsers(users);
+        localStorage.removeItem(key);
+        return { data: { message: "Password updated. You can now sign in with your new password." } };
+    }
+
     if (url.includes("/auth/register")) {
         const users = getStoredUsers();
         const existingUsername = users.find((user) => user.username === data?.username);
