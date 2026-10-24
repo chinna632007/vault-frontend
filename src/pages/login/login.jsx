@@ -17,6 +17,7 @@ function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const registrationSuccess = location.state?.registrationSuccess;
+  const passwordResetSuccess = location.state?.passwordResetSuccess;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -63,6 +64,7 @@ function Login() {
               Registration complete. Use your new credentials to sign in.
             </div>
           )}
+          {passwordResetSuccess && <div className="success-message">Password updated. Sign in with your new password.</div>}
 
           <form onSubmit={handleSubmit} autoComplete="off">
             <div className="input-group">
@@ -108,6 +110,10 @@ function Login() {
               {loading ? "Logging in..." : "Login"}
             </button>
           </form>
+
+          <div className="register-link">
+            <Link to="/forgot-password">Forgot password?</Link>
+          </div>
 
           <div className="register-link">
             Don't have an account?
