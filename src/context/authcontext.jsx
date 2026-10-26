@@ -47,6 +47,16 @@ export function AuthProvider({ children }) {
     }
   };
 
+  const forgotPassword = async ({ username, email }) => {
+    const response = await api.post("/auth/forgot-password", { username, email });
+    return response.data;
+  };
+
+  const resetPassword = async (token, password) => {
+    const response = await api.post("/auth/reset-password", { token, password });
+    return response.data;
+  };
+
   const register = async (userData) => {
     const response = await api.post("/auth/register", userData);
     const registeredUser = response?.data?.user;
@@ -87,6 +97,8 @@ export function AuthProvider({ children }) {
         user,
         loading,
         login,
+        forgotPassword,
+        resetPassword,
         register,
         logout,
         updateUser,

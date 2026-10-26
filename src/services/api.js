@@ -186,6 +186,23 @@ const mockRequest = async (url, method = "get", data = null, config = {}) => {
         return { data: { user: sanitizeUser(user), message: "Registration successful" } };
     }
 
+    // --- MOCK / DEMO ONLY — no real backend available ---
+    if (url.includes("/auth/forgot-password")) {
+        // Simulates a backend that could not send the reset email.
+        const demoToken = "demo-token-" + Math.random().toString(36).slice(2, 12);
+        return {
+            data: {
+                demo: true,
+                message: "Demo mode: email could not be sent. Use the simulated reset link below.",
+                resetUrl: `${window.location.origin}/reset-password?token=${demoToken}`,
+            },
+        };
+    }
+    if (url.includes("/auth/reset-password")) {
+        // Simulates a successful password reset (no real token validation offline).
+        return { data: { message: "Demo mode: password reset simulated successfully." } };
+    }
+
     if (url.includes("/auth/me") && method === "put") {
         const users = getStoredUsers();
         if (!sessionUser) throw new Error("Not authenticated");

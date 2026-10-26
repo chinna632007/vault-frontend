@@ -4,6 +4,7 @@ import MainLayout from "./layouts/mainlayout";
 import AuthLayout from "./layouts/authlayout";
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
+import ResetPassword from "./pages/reset-password/reset-password";
 import Wallet from "./pages/wallet/wallet";
 import Dashboard from "./pages/dashboard/dashboard";
 import Documents from "./pages/documents/documents";
@@ -53,6 +54,7 @@ function App() {
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
           <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
+          <Route path="/reset-password" element={<PublicRoute><ResetPassword /></PublicRoute>} />
         </Route>
 
         {/* Public routes (guide, help, about, pricing, terms) */}

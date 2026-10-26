@@ -23,7 +23,7 @@ function Navbar({ onMenuToggle, mobileSidebarOpen }) {
   }, [location]);
 
   const { logout } = useAuth();
-  const isAuthPage = ["/", "/login", "/register"].includes(location.pathname);
+  const isAuthPage = ["/", "/login", "/register", "/reset-password"].includes(location.pathname);
   const isHomePage = location.pathname === "/" || location.pathname === "/login";
 
   const handleLogoutClick = () => {
