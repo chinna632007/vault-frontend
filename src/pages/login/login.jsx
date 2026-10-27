@@ -91,7 +91,7 @@ function Login() {
     try {
       const data = await forgotPassword({ username: trimmedUsername, email: trimmedEmail });
       if (data.demo && data.resetUrl) {
-        // Demo mode (SMTP not configured) — show simulated link
+        // Demo mode (Gmail API not configured) — show simulated link
         setDemo(data);
         setResetMessage(
           "Demo mode: email not configured. Use the simulated reset link below (demo only — email was not sent)."
