@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const defaultApi = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || "http://localhost:3000"
+    baseURL: import.meta.env.VITE_API_URL || ""
 });
 
 // JWT token interceptor — sends token in Authorization header
@@ -30,7 +30,7 @@ defaultApi.interceptors.response.use(
 );
 
 const mockDelay = (ms = 250) => new Promise((resolve) => setTimeout(resolve, ms));
-const shouldUseMock = !import.meta.env.VITE_API_URL;
+const shouldUseMock = import.meta.env.VITE_USE_MOCK === "true";
 
 // Read a File/Blob into a base64 data URL, so mock mode can persist the ORIGINAL
 // file bytes and later return them on download (mirrors the real backend's disk).
